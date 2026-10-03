@@ -7,9 +7,9 @@ const Part = (props) => {
 const Content = (props) => {
   return (
     <div>
-      <Part name={props.parts[0].name} exercises={props.parts[0].exercises} />
-      <Part name={props.parts[1].name} exercises={props.parts[1].exercises} />
-      <Part name={props.parts[2].name} exercises={props.parts[2].exercises} />
+      <Part name={props.parts[0].name} units={props.parts[0].units} />
+      <Part name={props.parts[1].name} units={props.parts[1].units} />
+      <Part name={props.parts[2].name} units={props.parts[2].units} />
     </div>
   )
 }
@@ -17,26 +17,39 @@ const Content = (props) => {
 const Total = (props) => {
   return (
   <p>
-    Number of exercises{' '}
-    {props.parts[0].exercises + props.parts[1].exercises + props.parts[2].exercises}
+    Total units:{' '}
+    {props.parts[0].units + props.parts[1].units + props.parts[2].units}
   </p>
   )
 }
 
+const footer = (props) => {
+return (
+    <footer>
+      <p>{props.fullName} - {props.courseCode} - {props.section}</p>
+    </footer>
+  )
+}
+
 const App = () => {
- const course = { 
-  name: 'Half Stack application development',
-  parts: [
-    { name: 'Fundamentals of React', exercises: 10 },
-    { name: 'Using props to pass data', exercises: 7 },
-    { name: 'State of a component', exercises: 14 },
-  ],
-)
+  const course = {
+    name: 'CIT-U SUBJECT NAME',
+    parts: [
+      { name: 'IT317', units: 3 },
+      { name: 'IT365', units: 3 },
+      { name: 'CSIT321', units: 3 },
+    ],
+  }
+  const fullName = 'EDVARD ANTONY L. DE LOS REYES'
+  const courseCode = 'CSIT340'
+  const section = 'G7'
+
   return (
     <div>
-      <Header course={course} />
-      <Content parts={parts} />
-      <Total parts={parts} />
+      <Header course={course.name} />
+      <Content parts={course.parts} />
+      <Total parts={course.parts} />
+      <Footer fullName={fullName} courseCode={courseCode} section={section} />
     </div>
   )
 }
